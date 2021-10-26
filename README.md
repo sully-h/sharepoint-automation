@@ -6,3 +6,4 @@ This project employs Selenium Webdriver to fill in an invoice on Microsoft Share
 
 ### To use:
 Load a .py file in the same directory with variables (type: str) matching your personal data.
+requires ```pip install webdriver-manager```
