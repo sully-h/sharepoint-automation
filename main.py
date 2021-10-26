@@ -1,6 +1,8 @@
 import time
-import selenium
+
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
+
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
 
@@ -14,7 +16,8 @@ from info import target_site, chrome_driver_webpath, username, password, dates, 
 
 class FormFiller():
     def __init__(self, **kwargs):
-        self.driver = webdriver.Chrome(chrome_driver_webpath)
+        self.driver = webdriver.Chrome(ChromeDriverManager().install())
+
         self.driver.get(target_site)
         self.actions = ActionChains(self.driver)
 
@@ -196,6 +199,6 @@ class FormFiller():
 if __name__ == '__main__':
     form_filler = FormFiller(log_on=True)
     for date in dates:
-        form_filler.fill_form(date, hours={"Monday": 3, "Tuesday": 4, "Wednesday": 4, "Thursday": 4, "Friday": 3},
+        form_filler.fill_form(date, hours={"Monday": 3, "Tuesday": 4, "Wednesday": 4, "Thursday": 4, "Friday": 3, "Saturday":0, "Sunday": 0},
                               holiday=True, tier_4=False)
 
